@@ -1,0 +1,65 @@
+﻿@model CarWorkshop.Application.CarWorkshop.Commands.EditCarWorkshop.EditCarWorkshopCommand
+
+@{
+    ViewData["Title"] = "Edit " + Model.Name;
+}
+
+<h1>Edit @Model.Name</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditWorkshop">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
+            <div class="form-group m-3">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group m-3">
+                <label asp-for="About" class="control-label"></label>
+                <input asp-for="About" class="form-control" />
+                <span asp-validation-for="About" class="text-danger"></span>
+            </div>
+            <div class="form-group m-3">
+                <label asp-for="PhoneNo" class="control-label"></label>
+                <input asp-for="PhoneNo" class="form-control" />
+                <span asp-validation-for="PhoneNo" class="text-danger"></span>
+            </div>
+            <div class="form-group m-3">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group m-3">
+                <label asp-for="City" class="control-label"></label> 
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group m-3">
+                <label asp-for="PostalCode" class="control-label"></label>
+                <input asp-for="PostalCode" class="form-control" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>            
+            <div class="form-group m-1">
+                <input type="submit" value="Save" class="btn btn-primary" />                
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <partial name="_CreateCarWorkshopService" model="new CarWorkshop.Application.CarWorkshopService.Commands.CreateCarWorkshopServiceCommand() { CarWorkshopEncodedName = Model.EncodedName}" />        
+</div>
+
+<div class="m-1">
+    <a class="btn btn-secondary" asp-action="Index">Back to Workshops List</a> 
+</div>
+
+<h3>Services: </h3>
+<div id="services" class="row" data-encoded-name="@Model.EncodedName"></div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/js/CarWorkshop/Edit.js"></script>
+}

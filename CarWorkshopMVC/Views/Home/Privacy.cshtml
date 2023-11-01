@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+    int currentYrer = DateTime.Now.Year;
+    DayOfWeek dayOfWeek = DateTime.Now.DayOfWeek;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+<p>Year : @currentYrer</p>
+@if(dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday)
+{
+    <p>It's weekend</p>
+}
+else
+{
+    <p>Not yet the weekend</p>
+}
+@switch (dayOfWeek)
+{
+    case DayOfWeek.Monday:
+        break;
+        //return kończy generowanie razora
+}
